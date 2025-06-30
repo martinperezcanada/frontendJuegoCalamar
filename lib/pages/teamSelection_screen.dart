@@ -55,7 +55,9 @@ class _TeamSelectionScreenState extends State<TeamSelectionScreen> {
   }
 
   Future<void> obtenerEquiposSeleccionados() async {
-    final url = Uri.parse('http://10.0.2.2:3000/users/$userId');
+    final url = Uri.parse(
+      'https://backend-juegocalamar.onrender.com/users/$userId',
+    );
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -91,7 +93,7 @@ class _TeamSelectionScreenState extends State<TeamSelectionScreen> {
 
     final liga = widget.ligaName;
     final url = Uri.parse(
-      'http://10.0.2.2:3000/users/$userId/ligas/$liga/equipos/$equipoId',
+      'https://backend-juegocalamar.onrender.com/users/$userId/ligas/$liga/equipos/$equipoId',
     );
 
     try {
@@ -106,7 +108,7 @@ class _TeamSelectionScreenState extends State<TeamSelectionScreen> {
 
   Future<void> incrementarSelectedCount(String equipoId) async {
     final url = Uri.parse(
-      'http://10.0.2.2:3000/teams/name/$equipoId/increment',
+      'https://backend-juegocalamar.onrender.com/teams/name/$equipoId/increment',
     );
     try {
       final response = await http.post(url);
@@ -120,7 +122,7 @@ class _TeamSelectionScreenState extends State<TeamSelectionScreen> {
 
   Future<void> decrementarSelectedCount(String equipoId) async {
     final url = Uri.parse(
-      'http://10.0.2.2:3000/teams/name/$equipoId/decrement',
+      'https://backend-juegocalamar.onrender.com/teams/name/$equipoId/decrement',
     );
     try {
       final response = await http.post(url);
@@ -194,7 +196,7 @@ class _TeamSelectionScreenState extends State<TeamSelectionScreen> {
 
     final liga = widget.ligaName;
     final url = Uri.parse(
-      'http://10.0.2.2:3000/users/$userId/ligas/$liga/equipos/$equipoId',
+      'https://backend-juegocalamar.onrender.com/users/$userId/ligas/$liga/equipos/$equipoId',
     );
 
     try {

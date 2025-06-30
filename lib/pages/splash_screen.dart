@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.network(
-              'http://10.0.2.2:3000/uploads/logo.png',
+              'https://backend-juegocalamar.onrender.com/uploads/logo.png',
               width: 180,
               height: 180,
               fit: BoxFit.contain,

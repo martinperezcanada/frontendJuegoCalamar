@@ -25,7 +25,7 @@ class MatchProvider with ChangeNotifier {
 
   Future<void> fetchEquiposSeleccionados(String userId, String ligaId) async {
     final url =
-        'http://10.0.2.2:3000/users/$userId/$ligaId/equiposSeleccionados';
+        'https://backend-juegocalamar.onrender.com/users/$userId/$ligaId/equiposSeleccionados';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -52,8 +52,8 @@ class MatchProvider with ChangeNotifier {
 
     try {
       final url = liga == null
-          ? 'http://10.0.2.2:3000/teams/jornada/$jornada'
-          : 'http://10.0.2.2:3000/teams/jornada/$jornada/liga/$liga';
+          ? 'https://backend-juegocalamar.onrender.com/teams/jornada/$jornada'
+          : 'https://backend-juegocalamar.onrender.com/teams/jornada/$jornada/liga/$liga';
 
       print('Fetching matches from $url');
 
@@ -81,7 +81,9 @@ class MatchProvider with ChangeNotifier {
 
   Future<void> determineCurrentJornada() async {
     try {
-      final response = await http.get(Uri.parse('http://10.0.2.2:3000/teams'));
+      final response = await http.get(
+        Uri.parse('https://backend-juegocalamar.onrender.com/teams'),
+      );
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
@@ -123,7 +125,7 @@ class MatchProvider with ChangeNotifier {
 
     try {
       final response = await http.get(
-        Uri.parse('http://10.0.2.2:3000/teams/liga/$liga'),
+        Uri.parse('https://backend-juegocalamar.onrender.com/teams/liga/$liga'),
       );
 
       print('📡 Estado de la respuesta: ${response.statusCode}');
@@ -158,7 +160,9 @@ class MatchProvider with ChangeNotifier {
   }
 
   Future<List<Map<String, dynamic>>> fetchAllTeams() async {
-    final response = await http.get(Uri.parse('http://10.0.2.2:3000/teams'));
+    final response = await http.get(
+      Uri.parse('https://backend-juegocalamar.onrender.com/teams'),
+    );
 
     if (response.statusCode == 200) {
       final List<dynamic> data = jsonDecode(response.body);
@@ -182,6 +186,6 @@ class MatchProvider with ChangeNotifier {
     };
 
     String fileName = mapping[lower] ?? lower;
-    return 'http://10.0.2.2:3000/uploads/$fileName.png';
+    return 'https://backend-juegocalamar.onrender.com/uploads/$fileName.png';
   }
 }

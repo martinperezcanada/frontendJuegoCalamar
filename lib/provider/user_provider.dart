@@ -11,7 +11,7 @@ class UserProvider extends ChangeNotifier {
   String? get token => _user?.token;
   String? get userId => _user?.id;
 
-  final String _baseUrl = 'http://10.0.2.2:3000/auth';
+  final String _baseUrl = 'https://backend-juegocalamar.onrender.com/auth';
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage();
 
   // 🔢 NUEVO: Contador de usuarios por liga
@@ -102,7 +102,9 @@ class UserProvider extends ChangeNotifier {
         throw Exception('userId no encontrado en el token');
       }
 
-      final url = Uri.parse('http://10.0.2.2:3000/users/$userId');
+      final url = Uri.parse(
+        'https://backend-juegocalamar.onrender.com/users/$userId',
+      );
       final responseUser = await http.get(
         url,
         headers: {'Authorization': 'Bearer $token'},
@@ -167,7 +169,9 @@ class UserProvider extends ChangeNotifier {
       return;
     }
 
-    final url = Uri.parse('http://10.0.2.2:3000/users/$userId');
+    final url = Uri.parse(
+      'https://backend-juegocalamar.onrender.com/users/$userId',
+    );
     if (kDebugMode) print('📡 Cargando detalles del usuario desde: $url');
 
     final response = await http.get(
@@ -200,7 +204,9 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> loadUserCountInLiga(String liga) async {
     try {
-      final url = Uri.parse('http://10.0.2.2:3000/users/count/by-liga/$liga');
+      final url = Uri.parse(
+        'https://backend-juegocalamar.onrender.com/users/count/by-liga/$liga',
+      );
       final res = await http.get(url);
 
       if (res.statusCode == 200) {

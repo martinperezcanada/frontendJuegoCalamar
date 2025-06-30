@@ -33,7 +33,7 @@ class _GameSelectionScreenState extends State<GameSelectionScreen> {
       final token = await storage.read(key: 'auth_token');
 
       final responseLigas = await http.get(
-        Uri.parse('http://10.0.2.2:3000/ligas-equipos'),
+        Uri.parse('https://backend-juegocalamar.onrender.com/ligas-equipos'),
       );
 
       if (responseLigas.statusCode == 200) {
@@ -44,7 +44,7 @@ class _GameSelectionScreenState extends State<GameSelectionScreen> {
 
       if (userId != null && token != null) {
         final responseUser = await http.get(
-          Uri.parse('http://10.0.2.2:3000/users/$userId'),
+          Uri.parse('https://backend-juegocalamar.onrender.com/users/$userId'),
           headers: {'Authorization': 'Bearer $token'},
         );
 
@@ -68,15 +68,15 @@ class _GameSelectionScreenState extends State<GameSelectionScreen> {
     final cleanLiga = liga.trim().toLowerCase();
 
     if (cleanLiga.contains('laliga')) {
-      return 'http://10.0.2.2:3000/uploads/laliga.png';
+      return 'https://backend-juegocalamar.onrender.com/uploads/laliga.png';
     } else if (cleanLiga.contains('premier')) {
-      return 'http://10.0.2.2:3000/uploads/premier.png';
+      return 'https://backend-juegocalamar.onrender.com/uploads/premier.png';
     } else if (cleanLiga.contains('mundialclubes')) {
-      return 'http://10.0.2.2:3000/uploads/mundialClubes.png';
+      return 'https://backend-juegocalamar.onrender.com/uploads/mundialClubes.png';
     } else if (cleanLiga.contains('serie')) {
-      return 'http://10.0.2.2:3000/uploads/seriea.png';
+      return 'https://backend-juegocalamar.onrender.com/uploads/seriea.png';
     } else {
-      return 'http://10.0.2.2:3000/uploads/default.png';
+      return 'https://backend-juegocalamar.onrender.com/uploads/default.png';
     }
   }
 
@@ -140,7 +140,7 @@ class _GameSelectionScreenState extends State<GameSelectionScreen> {
                     if (!yaUnido) {
                       final response = await http.patch(
                         Uri.parse(
-                          'http://10.0.2.2:3000/users/$userId/ligas/$liga',
+                          'https://backend-juegocalamar.onrender.com/users/$userId/ligas/$liga',
                         ),
                         headers: {'Authorization': 'Bearer $token'},
                       );
