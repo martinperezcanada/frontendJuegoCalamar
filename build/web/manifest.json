@@ -1,6 +1,6 @@
 {
-    "name": "juegocalamar_frontend",
-    "short_name": "juegocalamar_frontend",
+    "name": "juegoCalamar",
+    "short_name": "juegoCalamar",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
